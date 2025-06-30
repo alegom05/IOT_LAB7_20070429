@@ -1,58 +1,13 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        //maven { url 'https://jitpack.io' }
+    }
+}
 plugins {
-    id 'com.android.application'
-    id 'com.google.gms.google-services'
+    id 'com.android.application' version '8.9.0' apply false
+    id("com.google.gms.google-services") version "4.4.2" apply false
 }
 
-android {
-    namespace 'com.example.lab6'
-    compileSdk 35
-
-    defaultConfig {
-        applicationId "com.example.lab6"
-        minSdk 31
-        targetSdk 35
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-}
-
-dependencies {
-
-    implementation libs.appcompat
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation libs.activity
-    implementation libs.constraintlayout
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
-
-    implementation platform('com.google.firebase:firebase-bom:33.15.0')
-    implementation 'com.google.firebase:firebase-firestore'
-    implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
-    implementation 'com.google.firebase:firebase-auth'
-    implementation("com.google.firebase:firebase-analytics")
-    // Google Sign-In
-    implementation 'com.google.android.gms:play-services-auth:20.7.0'
-
-    // Facebook SDK
-    //implementation 'com.facebook.android:facebook-android-sdk:16.3.0'
-    implementation 'com.facebook.android:facebook-android-sdk:[15,16)'
-
-    //implementation 'com.github.PhilJay:MPAndroidChart:3.1.0'
-
-
-
-}
