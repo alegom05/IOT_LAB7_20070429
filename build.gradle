@@ -53,12 +53,6 @@ dependencies {
 
     //implementation 'com.github.PhilJay:MPAndroidChart:3.1.0'
 
-    //cloudinary
-    
-    implementation 'com.cloudinary:cloudinary-android:3.0.2'
 
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-    implementation 'com.cloudinary:cloudinary-android-download:3.0.2'
-    implementation 'com.cloudinary:cloudinary-android-preprocess:3.0.2'
 
 }
