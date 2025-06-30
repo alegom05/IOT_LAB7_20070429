@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".EgresosActivity">
+
+    <!-- Toolbar personalizada -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_egresos"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/black"
+        android:elevation="4dp"
+        app:title="Egresos"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_back" />
+
+    <!-- Contenedor -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Total -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <TextView
+                    android:id="@+id/tv_total_egresos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total de Egresos: S/. 0.00"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:padding="16dp" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Lista -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_egresos"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_egreso" />
+
+            <!-- Estado vacío -->
+            <LinearLayout
+                android:id="@+id/empty_state_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="32dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_money_off"
+                    android:alpha="0.4"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No tienes egresos registrados"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Presiona el botón + para agregar tu primer egreso"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Botón flotante -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_agregar_egreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add"
+            android:contentDescription="Agregar egreso"
+            app:backgroundTint="@android:color/black"
+            app:tint="@android:color/white" />
+    </FrameLayout>
+
+    <!-- Menú inferior -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:menu="@menu/menu_navigation"
+        app:itemIconTint="@color/nav_item_color_selector"
+        app:itemTextColor="@color/nav_item_color_selector"
+        app:labelVisibilityMode="labeled" />
+</LinearLayout>

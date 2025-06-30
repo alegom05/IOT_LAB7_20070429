@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gráfico de Barras</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          background-color: transparent;
+        }
+        canvas {
+          display: block;
+          margin: 20px auto;
+          max-width: 90%;
+        }
+    </style>
+</head>
+<body>
+<canvas id="barChart"></canvas>
+
+<script>
+    let barChartInstance = null;
+    function renderCharts(data) {
+      const ctx = document.getElementById("barChart").getContext("2d");
+
+      if (barChartInstance !== null) {
+            barChartInstance.destroy();
+      }
+
+      barChartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: data.labels,
+          datasets: [{
+            label: "Monto",
+            data: data.values,
+            backgroundColor: ["#4CAF50", "#FF9800"],
+            borderRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `S/. ${context.parsed.y.toFixed(2)}`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return `S/. ${value}`;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function updateBarChart(data) {
+        renderCharts(data);
+    }
+</script>
+</body>
+</html>

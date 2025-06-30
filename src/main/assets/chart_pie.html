@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pie Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        canvas {
+          width: 100% !important;
+          height: 100% !important;
+        }
+    </style>
+</head>
+<body>
+<canvas id="pieChart"></canvas>
+
+<script>
+    let pieChart;
+
+    function updateChart(data) {
+      const ctx = document.getElementById('pieChart').getContext('2d');
+
+      const labels = data.labels;
+      const values = data.values;
+
+      if (pieChart) {
+        pieChart.destroy();
+      }
+
+      pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Distribución',
+            data: values,
+            backgroundColor: ['#4CAF50', '#FF9800'], // verde, naranja
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Título del diálogo -->
+    <TextView
+        android:id="@+id/tv_titulo_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Egreso"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Campo título -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Título del egreso"
+        app:startIconDrawable="@drawable/ic_title"
+        app:endIconMode="clear_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
+            android:imeOptions="actionNext" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo monto -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_monto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Monto (S/.)"
+        app:startIconDrawable="@drawable/ic_money"
+        app:endIconMode="clear_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_monto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:imeOptions="actionNext" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo descripción -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_descripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Descripción (opcional)"
+        app:startIconDrawable="@drawable/ic_description"
+        app:endIconMode="clear_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="3"
+            android:imeOptions="actionNext" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo fecha -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_fecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:hint="Fecha"
+        app:startIconDrawable="@drawable/ic_calendar"
+        app:endIconDrawable="@drawable/ic_calendar"
+        app:endIconMode="custom"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="true"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo para subir imagen -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Imagen (obligatorio)"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Botón para seleccionar imagen -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_seleccionar_imagen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Seleccionar Imagen"
+                android:textSize="12sp"
+                app:icon="@drawable/outline_add_photo_alternate_24"
+                app:iconGravity="textStart"
+                app:iconSize="18dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Botón para tomar foto -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_tomar_foto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tomar Foto"
+                android:textSize="12sp"
+                app:icon="@drawable/outline_camera_24"
+                app:iconGravity="textStart"
+                app:iconSize="18dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        </LinearLayout>
+
+        <!-- Vista previa de la imagen seleccionada -->
+        <LinearLayout
+            android:id="@+id/ll_imagen_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_imagen_preview"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_corners"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tv_nombre_imagen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="imagen.jpg"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_eliminar_imagen"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/outline_close_small_24"
+                app:iconSize="16dp"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Botones de acción -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <!-- Botón cancelar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+        <!-- Botón guardar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            app:backgroundTint="@color/primary_color" />
+
+    </LinearLayout>
+
+</LinearLayout>
